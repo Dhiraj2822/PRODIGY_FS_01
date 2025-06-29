@@ -1,0 +1,257 @@
+/* Analytics Page Styles */
+.analytics-content {
+    display: grid;
+    gap: 30px;
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.analytics-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.analytics-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-header h3 {
+    color: #333;
+    font-weight: 600;
+    margin: 0;
+}
+
+.card-icon {
+    font-size: 1.5rem;
+}
+
+.metric-value {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.metric-value .number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4A90E2;
+    line-height: 1;
+}
+
+.metric-value .label {
+    color: #666;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metric-change {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.metric-change.positive {
+    background: rgba(39, 174, 96, 0.1);
+    color: #27AE60;
+}
+
+.metric-change.negative {
+    background: rgba(231, 76, 60, 0.1);
+    color: #E74C3C;
+}
+
+/* Charts Section */
+.charts-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.chart-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chart-card h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.chart-placeholder {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 160px;
+    gap: 10px;
+}
+
+.bar {
+    background: linear-gradient(135deg, #4A90E2, #357ABD);
+    border-radius: 4px 4px 0 0;
+    flex: 1;
+    min-height: 20px;
+    transition: all 0.3s ease;
+}
+
+.bar:hover {
+    background: linear-gradient(135deg, #357ABD, #2968A3);
+    transform: scaleY(1.1);
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Activity Timeline */
+.activity-timeline {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.activity-timeline h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.timeline-dot.success {
+    background: #27AE60;
+}
+
+.timeline-dot.info {
+    background: #4A90E2;
+}
+
+.timeline-dot.warning {
+    background: #F39C12;
+}
+
+.timeline-dot.error {
+    background: #E74C3C;
+}
+
+.timeline-content h4 {
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.timeline-content p {
+    color: #666;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+}
+
+.timeline-time {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+/* Admin Analytics Card */
+#admin-analytics-card {
+    border: 2px solid rgba(231, 76, 60, 0.2);
+}
+
+#admin-analytics-card .metric-value .number {
+    color: #E74C3C;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .charts-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .analytics-card {
+        padding: 20px;
+    }
+    
+    .chart-card,
+    .activity-timeline {
+        padding: 20px;
+    }
+    
+    .metric-value .number {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .analytics-content {
+        gap: 20px;
+    }
+    
+    .analytics-grid {
+        gap: 15px;
+    }
+    
+    .charts-section {
+        gap: 20px;
+    }
+}

@@ -1,0 +1,166 @@
+/* Dashboard Styles */
+.main-page {
+    min-height: 100vh;
+    padding: 90px 20px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+    display: grid;
+    gap: 40px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card .stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.stat-card h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.stat-card p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Recent Activity */
+.recent-activity {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.recent-activity h2 {
+    color: #333;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(74, 144, 226, 0.05);
+    border: 1px solid rgba(74, 144, 226, 0.1);
+}
+
+.activity-icon {
+    font-size: 1.5rem;
+    margin-top: 5px;
+}
+
+.activity-content h4 {
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.activity-content p {
+    color: #666;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.activity-time {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+/* Navigation Active State */
+.nav-link.active {
+    background: rgba(74, 144, 226, 0.2);
+    color: #4A90E2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .stat-card {
+        padding: 20px;
+    }
+    
+    .recent-activity {
+        padding: 20px;
+    }
+    
+    .activity-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-container {
+        padding: 0 15px;
+    }
+    
+    .stat-card {
+        padding: 15px;
+    }
+}

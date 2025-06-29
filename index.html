@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureAuth - Authentication System</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/auth.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/analytics.css">
+</head>
+<body>
+    <div id="app">
+        <div id="loading" class="loading-screen">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+        
+        <!-- Navigation -->
+        <nav id="navbar" class="navbar hidden">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <h2>SecureAuth</h2>
+                </div>
+                <div class="nav-links">
+                    <a href="#" id="nav-dashboard" class="nav-link active">Dashboard</a>
+                    <a href="#" id="nav-analytics" class="nav-link">Analytics</a>
+                    <a href="#" id="nav-profile" class="nav-link">Profile</a>
+                    <a href="#" id="nav-logout" class="nav-link logout-btn">Logout</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Login Form -->
+        <div id="login-page" class="auth-page">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <h1>Welcome Back</h1>
+                        <p>Sign in to your account</p>
+                    </div>
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" name="email" required>
+                            <span class="error-message" id="login-email-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" name="password" required>
+                            <span class="error-message" id="login-password-error"></span>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="remember-me">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="auth-btn primary" id="login-btn">
+                            <span class="btn-text">Sign In</span>
+                            <div class="btn-spinner hidden"></div>
+                        </button>
+                        <div class="auth-switch">
+                            <p>Don't have an account? <a href="#" id="show-register">Sign up</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-page" class="auth-page hidden">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <h1>Create Account</h1>
+                        <p>Join us today</p>
+                    </div>
+                    <form id="register-form" class="auth-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="register-firstname">First Name</label>
+                                <input type="text" id="register-firstname" name="firstname" required>
+                                <span class="error-message" id="register-firstname-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-lastname">Last Name</label>
+                                <input type="text" id="register-lastname" name="lastname" required>
+                                <span class="error-message" id="register-lastname-error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email Address</label>
+                            <input type="email" id="register-email" name="email" required>
+                            <span class="error-message" id="register-email-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <input type="password" id="register-password" name="password" required>
+                            <div class="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill" id="strength-fill"></div>
+                                </div>
+                                <span class="strength-text" id="strength-text">Password strength</span>
+                            </div>
+                            <span class="error-message" id="register-password-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm-password">Confirm Password</label>
+                            <input type="password" id="register-confirm-password" name="confirmPassword" required>
+                            <span class="error-message" id="register-confirm-error"></span>
+                        </div>
+                        <button type="submit" class="auth-btn primary" id="register-btn">
+                            <span class="btn-text">Create Account</span>
+                            <div class="btn-spinner hidden"></div>
+                        </button>
+                        <div class="auth-switch">
+                            <p>Already have an account? <a href="#" id="show-login">Sign in</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="main-page hidden">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>Dashboard</h1>
+                    <p id="welcome-message">Welcome back!</p>
+                </div>
+                <div class="dashboard-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">👤</div>
+                            <div class="stat-info">
+                                <h3>Profile</h3>
+                                <p>Manage your account</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🔐</div>
+                            <div class="stat-info">
+                                <h3>Security</h3>
+                                <p>Account security</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-info">
+                                <h3>Analytics</h3>
+                                <p>View statistics</p>
+                            </div>
+                        </div>
+                        <div class="stat-card" id="admin-panel-card">
+                            <div class="stat-icon">⚙️</div>
+                            <div class="stat-info">
+                                <h3>Admin Panel</h3>
+                                <p>Manage users</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recent-activity">
+                        <h2>Recent Activity</h2>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">✅</div>
+                                <div class="activity-content">
+                                    <h4>Successful Login</h4>
+                                    <p>You logged in successfully</p>
+                                    <span class="activity-time" id="login-time">Just now</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">🔒</div>
+                                <div class="activity-content">
+                                    <h4>Account Secure</h4>
+                                    <p>No security issues detected</p>
+                                    <span class="activity-time">Today</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Page -->
+        <div id="analytics-page" class="main-page hidden">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>Analytics Dashboard</h1>
+                    <p>Monitor your account activity and system metrics</p>
+                </div>
+                <div class="analytics-content">
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <div class="card-header">
+                                <h3>Login Activity</h3>
+                                <span class="card-icon">📈</span>
+                            </div>
+                            <div class="metric-value">
+                                <span class="number" id="login-count">12</span>
+                                <span class="label">This Month</span>
+                            </div>
+                            <div class="metric-change positive">
+                                <span>+15% from last month</span>
+                            </div>
+                        </div>
+                        
+                        <div class="analytics-card">
+                            <div class="card-header">
+                                <h3>Session Duration</h3>
+                                <span class="card-icon">⏱️</span>
+                            </div>
+                            <div class="metric-value">
+                                <span class="number" id="avg-session">24m</span>
+                                <span class="label">Average</span>
+                            </div>
+                            <div class="metric-change positive">
+                                <span>+8% from last month</span>
+                            </div>
+                        </div>
+                        
+                        <div class="analytics-card">
+                            <div class="card-header">
+                                <h3>Security Score</h3>
+                                <span class="card-icon">🛡️</span>
+                            </div>
+                            <div class="metric-value">
+                                <span class="number" id="security-score">95%</span>
+                                <span class="label">Excellent</span>
+                            </div>
+                            <div class="metric-change positive">
+                                <span>No issues detected</span>
+                            </div>
+                        </div>
+                        
+                        <div class="analytics-card" id="admin-analytics-card">
+                            <div class="card-header">
+                                <h3>Total Users</h3>
+                                <span class="card-icon">👥</span>
+                            </div>
+                            <div class="metric-value">
+                                <span class="number" id="total-users">0</span>
+                                <span class="label">Registered</span>
+                            </div>
+                            <div class="metric-change">
+                                <span id="user-growth">No new users</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="charts-section">
+                        <div class="chart-card">
+                            <h3>Login Trends</h3>
+                            <div class="chart-placeholder">
+                                <div class="chart-bars">
+                                    <div class="bar" style="height: 60%"></div>
+                                    <div class="bar" style="height: 80%"></div>
+                                    <div class="bar" style="height: 45%"></div>
+                                    <div class="bar" style="height: 90%"></div>
+                                    <div class="bar" style="height: 70%"></div>
+                                    <div class="bar" style="height: 85%"></div>
+                                    <div class="bar" style="height: 95%"></div>
+                                </div>
+                                <div class="chart-labels">
+                                    <span>Mon</span>
+                                    <span>Tue</span>
+                                    <span>Wed</span>
+                                    <span>Thu</span>
+                                    <span>Fri</span>
+                                    <span>Sat</span>
+                                    <span>Sun</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-timeline">
+                            <h3>Recent Activity Timeline</h3>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-dot success"></div>
+                                    <div class="timeline-content">
+                                        <h4>Successful Login</h4>
+                                        <p>Logged in from Chrome browser</p>
+                                        <span class="timeline-time">2 minutes ago</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot info"></div>
+                                    <div class="timeline-content">
+                                        <h4>Profile Updated</h4>
+                                        <p>Changed profile information</p>
+                                        <span class="timeline-time">1 hour ago</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot warning"></div>
+                                    <div class="timeline-content">
+                                        <h4>Password Changed</h4>
+                                        <p>Password was successfully updated</p>
+                                        <span class="timeline-time">2 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile-page" class="main-page hidden">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>Profile Settings</h1>
+                    <p>Manage your personal information</p>
+                </div>
+                <div class="profile-content">
+                    <div class="profile-card">
+                        <div class="profile-avatar-section">
+                            <div class="profile-avatar">
+                                <span id="profile-initials">AB</span>
+                            </div>
+                            <div class="profile-basic-info">
+                                <h2 id="profile-name">John Doe</h2>
+                                <p id="profile-email">john@example.com</p>
+                                <span id="profile-role" class="role-badge">User</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-form-section">
+                        <h3>Personal Information</h3>
+                        <form id="profile-form" class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-firstname">First Name</label>
+                                    <input type="text" id="edit-firstname" name="firstname" required>
+                                    <span class="error-message" id="edit-firstname-error"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-lastname">Last Name</label>
+                                    <input type="text" id="edit-lastname" name="lastname" required>
+                                    <span class="error-message" id="edit-lastname-error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-email">Email Address</label>
+                                <input type="email" id="edit-email" name="email" disabled>
+                                <small class="form-help">Email cannot be changed for security reasons</small>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="auth-btn primary" id="save-profile-btn">
+                                    <span class="btn-text">Save Changes</span>
+                                    <div class="btn-spinner hidden"></div>
+                                </button>
+                                <button type="button" class="auth-btn secondary" id="cancel-profile-btn">
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="profile-form-section">
+                        <h3>Change Password</h3>
+                        <form id="password-form" class="profile-form">
+                            <div class="form-group">
+                                <label for="current-password">Current Password</label>
+                                <input type="password" id="current-password" name="currentPassword" required>
+                                <span class="error-message" id="current-password-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">New Password</label>
+                                <input type="password" id="new-password" name="newPassword" required>
+                                <div class="password-strength">
+                                    <div class="strength-bar">
+                                        <div class="strength-fill" id="new-strength-fill"></div>
+                                    </div>
+                                    <span class="strength-text" id="new-strength-text">Password strength</span>
+                                </div>
+                                <span class="error-message" id="new-password-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-new-password">Confirm New Password</label>
+                                <input type="password" id="confirm-new-password" name="confirmNewPassword" required>
+                                <span class="error-message" id="confirm-new-password-error"></span>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="auth-btn primary" id="change-password-btn">
+                                    <span class="btn-text">Change Password</span>
+                                    <div class="btn-spinner hidden"></div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="profile-info-section">
+                        <h3>Account Information</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Member Since</label>
+                                <span id="member-since">January 2024</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Last Login</label>
+                                <span id="last-login">Today at 2:30 PM</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Account Status</label>
+                                <span class="status-active">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <script src="js/validation.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
